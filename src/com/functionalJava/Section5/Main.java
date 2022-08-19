@@ -12,9 +12,9 @@ public class Main {
         list.add("");
         list.add("Strong");
         list.add("");
+        list.add("BasicsStrong");
 
         // Predicate<String> predicate = s -> !s.isEmpty();
-
         List<Boolean> result1 = testIfEmpty(list, s -> !s.isEmpty());
         System.out.println(result1);
         List<Boolean> collect = list.stream().map(s -> !s.isEmpty()).toList();
@@ -22,6 +22,14 @@ public class Main {
         System.out.println("********");
         System.out.println(filterList(list, s->!s.isEmpty()));
         System.out.println(list.stream().filter(str->!str.isEmpty()).toList());
+
+        Predicate<String> filter = s -> s.contains("Basics");
+        System.out.println(filterList(list, filter));
+
+        List<Integer> intList = List.of(1, 4, 6, 7, 8);
+        Predicate<Integer> integerFilter = e -> e % 2 == 0;
+        List<Integer> integers = filterList(intList, integerFilter);
+        System.out.println(integers);
 
     }
 
@@ -33,9 +41,9 @@ public class Main {
         return boolList;
     }
 
-    public static List<String> filterList(List<String> strList, Predicate<String> prd){
-        List<String> list = new ArrayList<>();
-        for (String s : strList) {
+    public static <T> List<T> filterList(List<T> strList, Predicate<T> prd){
+        List<T> list = new ArrayList<>();
+        for (T s : strList) {
             if(prd.test(s)) list.add(s);
         }
         return list;

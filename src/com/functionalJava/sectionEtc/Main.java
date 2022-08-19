@@ -7,9 +7,9 @@ import java.util.function.Predicate;
 
 public class Main {
     public static void main(String ... args){
-        String a = null;
-        String sexy = Optional.ofNullable(a).orElse("sexy");
-        System.out.println(sexy);
+        var samp = new Sample(10){
+        };
+        System.out.println(samp.getNum());
 
     }
 }

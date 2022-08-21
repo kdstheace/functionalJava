@@ -1,36 +1,31 @@
 package com.functionalJava.section7;
 
 import java.util.Optional;
+import java.util.stream.Stream;
 
 public class Main {
 
     public static void main(String[] args) {
-        Integer a = 10;
-        Optional<Integer> optional = Optional.of(a);
+        //ifPresent(Consumer)
+        Optional<String> optional = Optional.of("Value");
+        optional.ifPresent(System.out::println); //Value
+        optional.ifPresent(val -> System.out.println(val + " is present")); //Value is present
+        Optional.empty().ifPresent(System.out::println); //nothing happened
 
-        //get > never use it. -> 굳이 옵셔널 쓸 이유가 없어짐
-        Integer aBack = optional.get();
-        System.out.println(aBack);
+        //ifPresentOrElse(존재할 때 액션, null일 때 액션)
+        optional.ifPresentOrElse(System.out::println, () -> System.out.println("Values is absent")); //Value
+        Optional.empty().ifPresentOrElse(System.out::println, () -> System.out.println("value is absent")); //value is absent
 
-        Optional<Integer> emptyOptional = Optional.empty();
-        // emptyOptional.get(); //NoSuchElementException!!
+        //stream : Optional의 value가 있는 애들만 시퀀셜스트림을 리턴함.
+        Stream<String> stream = optional.stream();
+        optional.stream().forEach(System.out::println); //Value
+        Optional.empty().stream().forEach(System.out::println); //아무일 없음
 
-        //boolean isPresent
-        Integer result = optional.isPresent()? optional.get() : 0;
-        System.out.println(result);
+        //or(Supplier) valued있으면 value 그대로, 없으면, new Option을 반환
+        //orElse의 경우 null일 때 다른 객체를 반환했으나, or의 경우 Optional을 반환한다/
+        optional.or(() -> Optional.of("New Value")).ifPresent(System.out::println); //Value
+        Optional.
 
-        //orElse,
-        Integer integer = optional.orElse(0);
-        System.out.println(integer);
-        Integer emptyInteger = emptyOptional.orElse(0);
-        System.out.println(emptyInteger);
-
-        //orElseGet(Supplier<? extends T>)
-        Integer integer1 = emptyOptional.orElseGet(() -> 9);
-        System.out.println(integer1);
-
-        //orElseThrow
-        emptyOptional.orElseThrow(IllegalArgumentException::new);
 
     }
 

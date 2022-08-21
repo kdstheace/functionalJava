@@ -10,6 +10,7 @@ public class Main {
         var samp = new Sample(10){
         };
         System.out.println(samp.getNum());
+        //check
 
     }
 }

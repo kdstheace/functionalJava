@@ -12,6 +12,8 @@ public class Main {
     public static void main(String[] args) {
         Stream<Object> empty = Stream.empty();
         System.out.println(empty.count());
+        List<String> strings = Arrays.asList("hello", "its me");
+
     }
 }
 // ----1-----

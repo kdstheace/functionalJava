@@ -4,13 +4,22 @@ public class Book {
     private String name;
     private String author;
     private String genre;
-    private int rating;
+    private double rating;
 
-    public Book(String name, String author, String genre, int rating) {
+    public Book(String name, String author, String genre, double rating) {
         this.name = name;
         this.author = author;
         this.genre = genre;
         this.rating = rating;
+    }
+
+    public boolean equals(Object obj){
+        if(obj == null) return false;
+        if(obj instanceof Book){
+            return ((Book) obj).getName().equals(this.name);
+        }else{
+            return false;
+        }
     }
 
     public String getName() {
@@ -37,11 +46,11 @@ public class Book {
         this.genre = genre;
     }
 
-    public int getRating() {
+    public double getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(double rating) {
         this.rating = rating;
     }
 

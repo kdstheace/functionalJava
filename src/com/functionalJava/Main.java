@@ -10,9 +10,9 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        Stream<Object> empty = Stream.empty();
-        System.out.println(empty.count());
-        List<String> strings = Arrays.asList("hello", "its me");
+        Stream.of("bb", "aa", "bsd", "ccc", "ddd", "abc", "99", "Cbb", "Taa", "taa").sorted().forEach(a -> System.out.print(a + " "));
+        Stream<String> strStream = Stream.of("dd", "aaa", "CC", "cc", "b");
+        
 
     }
 }

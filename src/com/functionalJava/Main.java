@@ -9,7 +9,8 @@ import java.util.stream.Stream;
 
 public class Main {
     public static void main(String[] args) {
-        new Thread(()-> System.out.println("hello")).start();
+        Optional<String> o = Optional.ofNullable(null);
+        System.out.println(o.orElseGet(() -> "g"));
     }
 }
 // ----1-----

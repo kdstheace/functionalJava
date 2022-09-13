@@ -17,8 +17,6 @@ public class Main {
             sb.append(str); //[A, B, C, D, E]
         });
         System.out.println(sb);
-
-
     }
 
     private static Optional<String> test(String str){
